@@ -16,7 +16,14 @@ const serif = Instrument_Serif({
   display: "swap",
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Gumbelle — The 11\" Classic Gumball Machine",
   description:
     "A real-glass, cast-metal gumball machine with a built-in coin bank. Playful, premium and delivered across South Africa. Order on WhatsApp.",
